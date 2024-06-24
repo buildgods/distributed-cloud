@@ -1,0 +1,6 @@
+cw:
+  db:
+    host: localhost
+    pw: 123456
+na:
+  address: localhost:8848

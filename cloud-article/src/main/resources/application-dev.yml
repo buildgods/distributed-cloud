@@ -1,0 +1,10 @@
+cw:
+  db:
+    host: 123.60.132.97
+    pw: caicaidebai@
+  re:
+    host: 123.60.132.97
+kk:
+  path: /usr/local/kkFileView/kkFileView-4.0.0/file
+na:
+  address: 192.168.153.1:8848

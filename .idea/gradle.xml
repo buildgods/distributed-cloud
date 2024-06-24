@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="LOCAL" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="E:/apps/gradle-7.6.4" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/cloud-ai" />
+            <option value="$PROJECT_DIR$/cloud-article" />
+            <option value="$PROJECT_DIR$/cloud-category" />
+            <option value="$PROJECT_DIR$/cloud-common" />
+            <option value="$PROJECT_DIR$/cloud-email" />
+            <option value="$PROJECT_DIR$/cloud-file" />
+            <option value="$PROJECT_DIR$/cloud-grateway" />
+            <option value="$PROJECT_DIR$/cloud-share" />
+            <option value="$PROJECT_DIR$/cloud-upload" />
+            <option value="$PROJECT_DIR$/cloud-user" />
+            <option value="$PROJECT_DIR$/cloud-verify" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,75 @@
+group 'org.cloud.learn'
+version = '1.0-SNAPSHOT'
+apply plugin: 'java'
+sourceCompatibility = 17
+
+buildscript {
+    ext {
+        //定义一个变量，统一规定springboot的版本
+        springBootVersion = '2.7.12'
+        springCloudVersion = '2021.0.3'
+        springCloudAlibabaVersion = '2021.0.4.0'
+        mysqlVersion = '8.0.23'
+        mybatisPlusVersion = '3.4.3'
+        mybatisVersion = '3.0.0'
+        lombokVersion = '1.18.20'
+        hutoolVersion = '5.8.11'
+
+        addDependencies = {
+            project ->
+                project.dependencies{
+                    implementation(group:'org.springframework.boot',name:'spring-boot-starter-web',version:"${springBootVersion}")
+                    implementation(group:'org.springframework.boot',name:'spring-boot-starter-test',version:"${springBootVersion}")
+                    implementation(group:'org.springframework.cloud',name:'spring-cloud-dependencies',version:"${springCloudVersion}")
+                    implementation(group:'com.alibaba.cloud',name:'spring-cloud-alibaba-dependencies',version:"${springCloudAlibabaVersion}")
+                    implementation(group:'com.alibaba.cloud',name:'spring-cloud-starter-alibaba-sentinel',version:"${springCloudAlibabaVersion}")
+//        implementation(group: 'com.baomidou', name: 'mybatis-plus-boot-starter',version: "${mybatisPlusVersion}")
+                    implementation(group: 'org.projectlombok', name: 'lombok')
+                    implementation(group: 'cn.hutool', name: 'hutool-all',version: "${hutoolVersion}")
+                    implementation(group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: "${mybatisVersion}")
+                    implementation(group: 'mysql', name: 'mysql-connector-java',version:"${mysqlVersion}")
+                    implementation(group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery',version:'2021.0.4.0')
+                    implementation(group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-config',version:'2021.0.4.0')
+                    implementation(group: 'org.springframework.cloud', name: 'spring-cloud-starter-bootstrap',version:'3.1.3')
+
+                }
+        }
+    }
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {//用来打包
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+allprojects {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        jcenter()
+        mavenCentral()
+    }
+    //指定编码格式
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+}
+
+//设定当前模块项目中的配置
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    //spring boot 插件
+    apply plugin: 'org.springframework.boot'
+    //A Gradle plugin that provides Maven-like dependency management functionality
+    apply plugin: 'io.spring.dependency-management'
+
+    if(name != 'cloud-grateway' && name != 'cloud-common'){
+        addDependencies(project)
+    }
+    jar {
+        manifest.attributes provider: 'gradle'
+    }
+}

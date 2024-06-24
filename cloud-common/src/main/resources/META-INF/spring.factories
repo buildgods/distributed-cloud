@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  org.cloud.common.config.WebConfig,\
+  org.cloud.common.utils.CacheClient

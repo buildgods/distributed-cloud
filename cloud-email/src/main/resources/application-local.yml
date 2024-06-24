@@ -1,0 +1,5 @@
+cw:
+  re:
+    host: localhost
+na:
+  address: localhost:8848

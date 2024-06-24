@@ -1,0 +1,7 @@
+spring:
+  # 指定活动的配置文件
+  profiles:
+    active: local
+## kkFileView文件路径
+kkFile:
+  path: ${kk.path}

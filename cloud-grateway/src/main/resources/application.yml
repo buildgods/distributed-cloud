@@ -1,0 +1,72 @@
+server:
+  port: 8080
+## 设置日志级别为DEBUG
+logging:
+  level:
+    root: info
+spring:
+  application:
+    name: gateway
+  profiles:
+    active: local
+  cloud:
+    nacos:
+      server-addr: ${na.address}
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]': # 匹配所有请求
+            allowedOrigins: "*" #跨域处理 允许所有的域
+            allowedMethods: # 支持的方法
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - PATCH
+              - OPTIONS
+      routes:
+        - id: user
+          uri: lb://user-service
+          predicates:
+            - Path=/api/user/**
+        - id: verify
+          uri: lb://verify-service
+          predicates:
+            - Path=/api/verify/**
+        - id: share
+          uri: lb://share-service
+          predicates:
+            - Path=/api/share/**
+        - id: upload
+          uri: lb://upload-service
+          predicates:
+            - Path=/api/upload/**,/api/images/**,/api/files/**,/api/uploadSliceFile/**,/api/mergeFragmentFile/**
+        - id: file
+          uri: lb://file-service
+          predicates:
+            - Path=/api/file/**
+        - id: email
+          uri: lb://email-service
+          predicates:
+            - Path=/api/email/**
+        - id: article
+          uri: lb://article-service
+          predicates:
+            - Path=/api/article/**
+        - id: ai
+          uri: lb://ai-service
+          predicates:
+            - Path=/api/openai/**
+        - id: category
+          uri: lb://category-service
+          predicates:
+            - Path=/api/category/**
+auth:
+  excludePaths:
+    - /api/user/login
+    - /api/user/register
+    - /api/user/forgetPwd
+    - /api/images/**
+    - /api/files/**
+    - /api/verify/getCode/**
+    - /api/mail/getCode/**

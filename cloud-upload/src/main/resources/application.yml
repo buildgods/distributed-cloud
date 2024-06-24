@@ -1,0 +1,13 @@
+spring:
+  # 资源访问地址
+  web:
+    resources:
+      static-locations: file:uploads/
+  servlet:
+    multipart:
+      max-file-size: 50MB # 上传文件最大限制
+      max-request-size: 50MB # 最大请求数
+server:
+  servlet:
+    context-path: /api
+  port: 8089

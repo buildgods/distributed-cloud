@@ -1,0 +1,13 @@
+rootProject.name = 'distributed-cloud-learning'
+include 'cloud-grateway'
+include 'cloud-user'
+include 'cloud-common'
+include 'cloud-email'
+include 'cloud-verify'
+include 'cloud-article'
+include 'cloud-category'
+include 'cloud-ai'
+include 'cloud-file'
+include 'cloud-share'
+include 'cloud-upload'
+

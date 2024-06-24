@@ -1,0 +1,19 @@
+spring:
+  mail:
+    # 发送者邮箱
+    username: 15564595518@163.com
+    host: smtp.163.com
+    password: NNTGKTJAQZBQLXKD
+    default-encoding: UTF-8
+    # 配置SSL 加密工厂
+    properties:
+      mail:
+        smtp:
+          socketFactoryClass: javax.net.ssl.SSLSocketFactory
+          #表示开启 DEBUG 模式，这样，邮件发送过程的日志会在控制台打印出来，方便排查错误
+          debug: true
+          ssl: true
+server:
+  servlet:
+    context-path: /api
+  port: 8084
